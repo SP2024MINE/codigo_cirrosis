@@ -1,0 +1,20 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+ruta_dataset = "cirrhosis.csv"
+data = pd.read_csv(ruta_dataset)
+
+data.head()
+
+data.shape
+data.describe()
+data.info()
+
+data['Age'].hist()
+plt.xlabel("Age")
+plt.ylabel("Frequency")
+plt.title("Distribution of Age")
+plt.show()
+
+("Hola, Jupyter")
+

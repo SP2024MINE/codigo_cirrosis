@@ -1,0 +1,6 @@
+# Cargar el archivo CSV
+import pandas as pd
+data = pd.read_csv('cirrhosis.csv')
+
+# Revisar si hay valores nulos en la columna 'Stage'
+print(data['Stage'].isnull().sum())
