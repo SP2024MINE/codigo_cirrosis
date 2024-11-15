@@ -2,7 +2,10 @@ Ruta
 cd "C:\Users\djsol\Documents\MINE\Semestre_II\codigo_cirrosis"
 cd "C:\Users\JONANNA\Documents\MINE\codigo_cirrosis"
 
+git submodule add https://github.com/SP2024MINE/codigo_cirrosis/commits?author=djsoler
 
+
+https://github.com/SP2024MINE/codigo_cirrosis/commits?author=djsoler
 
 ruta_dataset = "ruta/del/dataset/cirrhosis.csv"
 
