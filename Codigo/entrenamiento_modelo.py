@@ -1,0 +1,131 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "3c2bba6a-caad-4dda-9c71-2eaacea3bbf5",
+   "metadata": {},
+   "outputs": [
+    {
+     "ename": "ValueError",
+     "evalue": "Specifying the columns using strings is only supported for dataframes.",
+     "output_type": "error",
+     "traceback": [
+      "\u001b[1;31m---------------------------------------------------------------------------\u001b[0m",
+      "\u001b[1;31mAttributeError\u001b[0m                            Traceback (most recent call last)",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\utils\\_indexing.py:338\u001b[0m, in \u001b[0;36m_get_column_indices\u001b[1;34m(X, key)\u001b[0m\n\u001b[0;32m    337\u001b[0m \u001b[38;5;28;01mtry\u001b[39;00m:\n\u001b[1;32m--> 338\u001b[0m     all_columns \u001b[38;5;241m=\u001b[39m \u001b[43mX\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mcolumns\u001b[49m\n\u001b[0;32m    339\u001b[0m \u001b[38;5;28;01mexcept\u001b[39;00m \u001b[38;5;167;01mAttributeError\u001b[39;00m:\n",
+      "\u001b[1;31mAttributeError\u001b[0m: 'numpy.ndarray' object has no attribute 'columns'",
+      "\nDuring handling of the above exception, another exception occurred:\n",
+      "\u001b[1;31mValueError\u001b[0m                                Traceback (most recent call last)",
+      "Cell \u001b[1;32mIn[2], line 56\u001b[0m\n\u001b[0;32m     50\u001b[0m model_pipeline \u001b[38;5;241m=\u001b[39m Pipeline(steps\u001b[38;5;241m=\u001b[39m[\n\u001b[0;32m     51\u001b[0m     (\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mpreprocessor\u001b[39m\u001b[38;5;124m'\u001b[39m, preprocessor),\n\u001b[0;32m     52\u001b[0m     (\u001b[38;5;124m'\u001b[39m\u001b[38;5;124mclassifier\u001b[39m\u001b[38;5;124m'\u001b[39m, classifier)\n\u001b[0;32m     53\u001b[0m ])\n\u001b[0;32m     55\u001b[0m \u001b[38;5;66;03m# Entrena el modelo\u001b[39;00m\n\u001b[1;32m---> 56\u001b[0m \u001b[43mmodel_pipeline\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mfit\u001b[49m\u001b[43m(\u001b[49m\u001b[43mX_train\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43my_train\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m     58\u001b[0m \u001b[38;5;66;03m# Guarda el pipeline de preprocesamiento y el modelo\u001b[39;00m\n\u001b[0;32m     59\u001b[0m dump(preprocessor, \u001b[38;5;124m'\u001b[39m\u001b[38;5;124mCodigo/preprocessing_pipeline.joblib\u001b[39m\u001b[38;5;124m'\u001b[39m)\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\base.py:1473\u001b[0m, in \u001b[0;36m_fit_context.<locals>.decorator.<locals>.wrapper\u001b[1;34m(estimator, *args, **kwargs)\u001b[0m\n\u001b[0;32m   1466\u001b[0m     estimator\u001b[38;5;241m.\u001b[39m_validate_params()\n\u001b[0;32m   1468\u001b[0m \u001b[38;5;28;01mwith\u001b[39;00m config_context(\n\u001b[0;32m   1469\u001b[0m     skip_parameter_validation\u001b[38;5;241m=\u001b[39m(\n\u001b[0;32m   1470\u001b[0m         prefer_skip_nested_validation \u001b[38;5;129;01mor\u001b[39;00m global_skip_validation\n\u001b[0;32m   1471\u001b[0m     )\n\u001b[0;32m   1472\u001b[0m ):\n\u001b[1;32m-> 1473\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[43mfit_method\u001b[49m\u001b[43m(\u001b[49m\u001b[43mestimator\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\pipeline.py:469\u001b[0m, in \u001b[0;36mPipeline.fit\u001b[1;34m(self, X, y, **params)\u001b[0m\n\u001b[0;32m    426\u001b[0m \u001b[38;5;250m\u001b[39m\u001b[38;5;124;03m\"\"\"Fit the model.\u001b[39;00m\n\u001b[0;32m    427\u001b[0m \n\u001b[0;32m    428\u001b[0m \u001b[38;5;124;03mFit all the transformers one after the other and sequentially transform the\u001b[39;00m\n\u001b[1;32m   (...)\u001b[0m\n\u001b[0;32m    466\u001b[0m \u001b[38;5;124;03m    Pipeline with fitted steps.\u001b[39;00m\n\u001b[0;32m    467\u001b[0m \u001b[38;5;124;03m\"\"\"\u001b[39;00m\n\u001b[0;32m    468\u001b[0m routed_params \u001b[38;5;241m=\u001b[39m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_check_method_params(method\u001b[38;5;241m=\u001b[39m\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfit\u001b[39m\u001b[38;5;124m\"\u001b[39m, props\u001b[38;5;241m=\u001b[39mparams)\n\u001b[1;32m--> 469\u001b[0m Xt \u001b[38;5;241m=\u001b[39m \u001b[38;5;28;43mself\u001b[39;49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43m_fit\u001b[49m\u001b[43m(\u001b[49m\u001b[43mX\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43my\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mrouted_params\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m    470\u001b[0m \u001b[38;5;28;01mwith\u001b[39;00m _print_elapsed_time(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mPipeline\u001b[39m\u001b[38;5;124m\"\u001b[39m, \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_log_message(\u001b[38;5;28mlen\u001b[39m(\u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39msteps) \u001b[38;5;241m-\u001b[39m \u001b[38;5;241m1\u001b[39m)):\n\u001b[0;32m    471\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_final_estimator \u001b[38;5;241m!=\u001b[39m \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mpassthrough\u001b[39m\u001b[38;5;124m\"\u001b[39m:\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\pipeline.py:406\u001b[0m, in \u001b[0;36mPipeline._fit\u001b[1;34m(self, X, y, routed_params)\u001b[0m\n\u001b[0;32m    404\u001b[0m     cloned_transformer \u001b[38;5;241m=\u001b[39m clone(transformer)\n\u001b[0;32m    405\u001b[0m \u001b[38;5;66;03m# Fit or load from cache the current transformer\u001b[39;00m\n\u001b[1;32m--> 406\u001b[0m X, fitted_transformer \u001b[38;5;241m=\u001b[39m \u001b[43mfit_transform_one_cached\u001b[49m\u001b[43m(\u001b[49m\n\u001b[0;32m    407\u001b[0m \u001b[43m    \u001b[49m\u001b[43mcloned_transformer\u001b[49m\u001b[43m,\u001b[49m\n\u001b[0;32m    408\u001b[0m \u001b[43m    \u001b[49m\u001b[43mX\u001b[49m\u001b[43m,\u001b[49m\n\u001b[0;32m    409\u001b[0m \u001b[43m    \u001b[49m\u001b[43my\u001b[49m\u001b[43m,\u001b[49m\n\u001b[0;32m    410\u001b[0m \u001b[43m    \u001b[49m\u001b[38;5;28;43;01mNone\u001b[39;49;00m\u001b[43m,\u001b[49m\n\u001b[0;32m    411\u001b[0m \u001b[43m    \u001b[49m\u001b[43mmessage_clsname\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mPipeline\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m,\u001b[49m\n\u001b[0;32m    412\u001b[0m \u001b[43m    \u001b[49m\u001b[43mmessage\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43m_log_message\u001b[49m\u001b[43m(\u001b[49m\u001b[43mstep_idx\u001b[49m\u001b[43m)\u001b[49m\u001b[43m,\u001b[49m\n\u001b[0;32m    413\u001b[0m \u001b[43m    \u001b[49m\u001b[43mparams\u001b[49m\u001b[38;5;241;43m=\u001b[39;49m\u001b[43mrouted_params\u001b[49m\u001b[43m[\u001b[49m\u001b[43mname\u001b[49m\u001b[43m]\u001b[49m\u001b[43m,\u001b[49m\n\u001b[0;32m    414\u001b[0m \u001b[43m\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m    415\u001b[0m \u001b[38;5;66;03m# Replace the transformer of the step with the fitted\u001b[39;00m\n\u001b[0;32m    416\u001b[0m \u001b[38;5;66;03m# transformer. This is necessary when loading the transformer\u001b[39;00m\n\u001b[0;32m    417\u001b[0m \u001b[38;5;66;03m# from the cache.\u001b[39;00m\n\u001b[0;32m    418\u001b[0m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39msteps[step_idx] \u001b[38;5;241m=\u001b[39m (name, fitted_transformer)\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\joblib\\memory.py:312\u001b[0m, in \u001b[0;36mNotMemorizedFunc.__call__\u001b[1;34m(self, *args, **kwargs)\u001b[0m\n\u001b[0;32m    311\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21m__call__\u001b[39m(\u001b[38;5;28mself\u001b[39m, \u001b[38;5;241m*\u001b[39margs, \u001b[38;5;241m*\u001b[39m\u001b[38;5;241m*\u001b[39mkwargs):\n\u001b[1;32m--> 312\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[38;5;28;43mself\u001b[39;49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mfunc\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\pipeline.py:1310\u001b[0m, in \u001b[0;36m_fit_transform_one\u001b[1;34m(transformer, X, y, weight, message_clsname, message, params)\u001b[0m\n\u001b[0;32m   1308\u001b[0m \u001b[38;5;28;01mwith\u001b[39;00m _print_elapsed_time(message_clsname, message):\n\u001b[0;32m   1309\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28mhasattr\u001b[39m(transformer, \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfit_transform\u001b[39m\u001b[38;5;124m\"\u001b[39m):\n\u001b[1;32m-> 1310\u001b[0m         res \u001b[38;5;241m=\u001b[39m \u001b[43mtransformer\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mfit_transform\u001b[49m\u001b[43m(\u001b[49m\u001b[43mX\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43my\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43mparams\u001b[49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43mget\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[38;5;124;43mfit_transform\u001b[39;49m\u001b[38;5;124;43m\"\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43m{\u001b[49m\u001b[43m}\u001b[49m\u001b[43m)\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m   1311\u001b[0m     \u001b[38;5;28;01melse\u001b[39;00m:\n\u001b[0;32m   1312\u001b[0m         res \u001b[38;5;241m=\u001b[39m transformer\u001b[38;5;241m.\u001b[39mfit(X, y, \u001b[38;5;241m*\u001b[39m\u001b[38;5;241m*\u001b[39mparams\u001b[38;5;241m.\u001b[39mget(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mfit\u001b[39m\u001b[38;5;124m\"\u001b[39m, {}))\u001b[38;5;241m.\u001b[39mtransform(\n\u001b[0;32m   1313\u001b[0m             X, \u001b[38;5;241m*\u001b[39m\u001b[38;5;241m*\u001b[39mparams\u001b[38;5;241m.\u001b[39mget(\u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mtransform\u001b[39m\u001b[38;5;124m\"\u001b[39m, {})\n\u001b[0;32m   1314\u001b[0m         )\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\utils\\_set_output.py:316\u001b[0m, in \u001b[0;36m_wrap_method_output.<locals>.wrapped\u001b[1;34m(self, X, *args, **kwargs)\u001b[0m\n\u001b[0;32m    314\u001b[0m \u001b[38;5;129m@wraps\u001b[39m(f)\n\u001b[0;32m    315\u001b[0m \u001b[38;5;28;01mdef\u001b[39;00m \u001b[38;5;21mwrapped\u001b[39m(\u001b[38;5;28mself\u001b[39m, X, \u001b[38;5;241m*\u001b[39margs, \u001b[38;5;241m*\u001b[39m\u001b[38;5;241m*\u001b[39mkwargs):\n\u001b[1;32m--> 316\u001b[0m     data_to_wrap \u001b[38;5;241m=\u001b[39m \u001b[43mf\u001b[49m\u001b[43m(\u001b[49m\u001b[38;5;28;43mself\u001b[39;49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mX\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m    317\u001b[0m     \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28misinstance\u001b[39m(data_to_wrap, \u001b[38;5;28mtuple\u001b[39m):\n\u001b[0;32m    318\u001b[0m         \u001b[38;5;66;03m# only wrap the first output for cross decomposition\u001b[39;00m\n\u001b[0;32m    319\u001b[0m         return_tuple \u001b[38;5;241m=\u001b[39m (\n\u001b[0;32m    320\u001b[0m             _wrap_data_with_container(method, data_to_wrap[\u001b[38;5;241m0\u001b[39m], X, \u001b[38;5;28mself\u001b[39m),\n\u001b[0;32m    321\u001b[0m             \u001b[38;5;241m*\u001b[39mdata_to_wrap[\u001b[38;5;241m1\u001b[39m:],\n\u001b[0;32m    322\u001b[0m         )\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\base.py:1473\u001b[0m, in \u001b[0;36m_fit_context.<locals>.decorator.<locals>.wrapper\u001b[1;34m(estimator, *args, **kwargs)\u001b[0m\n\u001b[0;32m   1466\u001b[0m     estimator\u001b[38;5;241m.\u001b[39m_validate_params()\n\u001b[0;32m   1468\u001b[0m \u001b[38;5;28;01mwith\u001b[39;00m config_context(\n\u001b[0;32m   1469\u001b[0m     skip_parameter_validation\u001b[38;5;241m=\u001b[39m(\n\u001b[0;32m   1470\u001b[0m         prefer_skip_nested_validation \u001b[38;5;129;01mor\u001b[39;00m global_skip_validation\n\u001b[0;32m   1471\u001b[0m     )\n\u001b[0;32m   1472\u001b[0m ):\n\u001b[1;32m-> 1473\u001b[0m     \u001b[38;5;28;01mreturn\u001b[39;00m \u001b[43mfit_method\u001b[49m\u001b[43m(\u001b[49m\u001b[43mestimator\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43margs\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[38;5;241;43m*\u001b[39;49m\u001b[43mkwargs\u001b[49m\u001b[43m)\u001b[49m\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\compose\\_column_transformer.py:968\u001b[0m, in \u001b[0;36mColumnTransformer.fit_transform\u001b[1;34m(self, X, y, **params)\u001b[0m\n\u001b[0;32m    965\u001b[0m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_validate_transformers()\n\u001b[0;32m    966\u001b[0m n_samples \u001b[38;5;241m=\u001b[39m _num_samples(X)\n\u001b[1;32m--> 968\u001b[0m \u001b[38;5;28;43mself\u001b[39;49m\u001b[38;5;241;43m.\u001b[39;49m\u001b[43m_validate_column_callables\u001b[49m\u001b[43m(\u001b[49m\u001b[43mX\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m    969\u001b[0m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_validate_remainder(X)\n\u001b[0;32m    971\u001b[0m \u001b[38;5;28;01mif\u001b[39;00m _routing_enabled():\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\compose\\_column_transformer.py:536\u001b[0m, in \u001b[0;36mColumnTransformer._validate_column_callables\u001b[1;34m(self, X)\u001b[0m\n\u001b[0;32m    534\u001b[0m         columns \u001b[38;5;241m=\u001b[39m columns(X)\n\u001b[0;32m    535\u001b[0m     all_columns\u001b[38;5;241m.\u001b[39mappend(columns)\n\u001b[1;32m--> 536\u001b[0m     transformer_to_input_indices[name] \u001b[38;5;241m=\u001b[39m \u001b[43m_get_column_indices\u001b[49m\u001b[43m(\u001b[49m\u001b[43mX\u001b[49m\u001b[43m,\u001b[49m\u001b[43m \u001b[49m\u001b[43mcolumns\u001b[49m\u001b[43m)\u001b[49m\n\u001b[0;32m    538\u001b[0m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_columns \u001b[38;5;241m=\u001b[39m all_columns\n\u001b[0;32m    539\u001b[0m \u001b[38;5;28mself\u001b[39m\u001b[38;5;241m.\u001b[39m_transformer_to_input_indices \u001b[38;5;241m=\u001b[39m transformer_to_input_indices\n",
+      "File \u001b[1;32m~\\AppData\\Local\\pypoetry\\Cache\\virtualenvs\\prediccion-supervivencia-pacientes-cirrosi-RI6kFiFr-py3.12\\Lib\\site-packages\\sklearn\\utils\\_indexing.py:340\u001b[0m, in \u001b[0;36m_get_column_indices\u001b[1;34m(X, key)\u001b[0m\n\u001b[0;32m    338\u001b[0m     all_columns \u001b[38;5;241m=\u001b[39m X\u001b[38;5;241m.\u001b[39mcolumns\n\u001b[0;32m    339\u001b[0m \u001b[38;5;28;01mexcept\u001b[39;00m \u001b[38;5;167;01mAttributeError\u001b[39;00m:\n\u001b[1;32m--> 340\u001b[0m     \u001b[38;5;28;01mraise\u001b[39;00m \u001b[38;5;167;01mValueError\u001b[39;00m(\n\u001b[0;32m    341\u001b[0m         \u001b[38;5;124m\"\u001b[39m\u001b[38;5;124mSpecifying the columns using strings is only supported for dataframes.\u001b[39m\u001b[38;5;124m\"\u001b[39m\n\u001b[0;32m    342\u001b[0m     )\n\u001b[0;32m    343\u001b[0m \u001b[38;5;28;01mif\u001b[39;00m \u001b[38;5;28misinstance\u001b[39m(key, \u001b[38;5;28mstr\u001b[39m):\n\u001b[0;32m    344\u001b[0m     columns \u001b[38;5;241m=\u001b[39m [key]\n",
+      "\u001b[1;31mValueError\u001b[0m: Specifying the columns using strings is only supported for dataframes."
+     ]
+    }
+   ],
+   "source": [
+    "# Importa las librerías requeridas para el preprocesamiento\n",
+    "from sklearn.impute import SimpleImputer\n",
+    "from sklearn.preprocessing import OneHotEncoder\n",
+    "from sklearn.compose import ColumnTransformer\n",
+    "from sklearn.pipeline import Pipeline\n",
+    "import pandas as pd\n",
+    "from joblib import dump\n",
+    "\n",
+    "# Cargar los datos\n",
+    "data = pd.read_csv('C:/Users/JONANNA/Documents/MINE/codigo_cirrosis/Codigo/cirrhosis.csv')\n",
+    "data.columns = data.columns.str.strip()\n",
+    "\n",
+    "# Separar las características (X) y la variable objetivo (y)\n",
+    "X = data.drop(columns=['Stage'])\n",
+    "y = data['Stage']\n",
+    "\n",
+    "# Definir transformaciones\n",
+    "numeric_features = X.select_dtypes(include=['float64', 'int64']).columns\n",
+    "categorical_features = X.select_dtypes(include=['object']).columns\n",
+    "\n",
+    "numeric_transformer = Pipeline(steps=[\n",
+    "    ('imputer', SimpleImputer(strategy='mean'))\n",
+    "])\n",
+    "\n",
+    "categorical_transformer = Pipeline(steps=[\n",
+    "    ('imputer', SimpleImputer(strategy='most_frequent')),\n",
+    "    ('onehot', OneHotEncoder(handle_unknown='ignore'))\n",
+    "])\n",
+    "\n",
+    "# Preprocesador completo\n",
+    "preprocessor = ColumnTransformer(\n",
+    "    transformers=[\n",
+    "        ('num', numeric_transformer, numeric_features),\n",
+    "        ('cat', categorical_transformer, categorical_features)\n",
+    "    ]\n",
+    ")\n",
+    "\n",
+    "# Aplicar el preprocesador\n",
+    "X_transformed = preprocessor.fit_transform(X)\n",
+    "\n",
+    "# Divide los datos en conjuntos de entrenamiento y prueba\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "X_train, X_test, y_train, y_test = train_test_split(X_transformed, y, test_size=0.2, random_state=42)\n",
+    "\n",
+    "# Define el modelo de clasificación\n",
+    "from sklearn.ensemble import RandomForestClassifier\n",
+    "classifier = RandomForestClassifier(random_state=42)\n",
+    "\n",
+    "# Crea el pipeline completo que incluye el preprocesamiento y el modelo\n",
+    "model_pipeline = Pipeline(steps=[\n",
+    "    ('preprocessor', preprocessor),\n",
+    "    ('classifier', classifier)\n",
+    "])\n",
+    "\n",
+    "# Entrena el modelo\n",
+    "model_pipeline.fit(X_train, y_train)\n",
+    "\n",
+    "# Guarda el pipeline de preprocesamiento y el modelo\n",
+    "dump(preprocessor, 'Codigo/preprocessing_pipeline.joblib')\n",
+    "dump(model_pipeline, 'Codigo/model_pipeline.joblib')\n",
+    "\n",
+    "print(\"El pipeline de preprocesamiento y el modelo entrenado han sido guardados.\")\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5828250b-de2b-45c0-b573-ee9c0c11fa79",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
